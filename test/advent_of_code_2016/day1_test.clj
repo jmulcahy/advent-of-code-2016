@@ -2,7 +2,6 @@
   (:require [advent-of-code-2016.day1 :as sut]
             [clojure.test :refer :all]))
 
-
 (deftest turn-left-test
   (testing "left of north (0, 1) is west (-1, 0)"
     (is (= (sut/turn-left [0 1]) [-1 0]))))

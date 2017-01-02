@@ -1,6 +1,6 @@
 (ns advent-of-code-2016.core
-  (:require [advent-of-code-2016.day1 :as day1])
-  (:gen-class))
+  (:gen-class)
+  (:require [advent-of-code-2016.day1 :as day1]))
 
 (defn do-day1
   [part]

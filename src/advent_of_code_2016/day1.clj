@@ -1,7 +1,6 @@
 (ns advent-of-code-2016.day1
   (:require [clojure.string :as str]))
 
-
 (defn turn-left
   [current-heading]
   (vector (* (second current-heading) -1)
@@ -98,4 +97,4 @@
   [input]
   (let [directions (parse-day1 input)]
     (manhattan-distance
-     (run-directions-check-if-returned[[0 0] [0 1]] directions))))
+     (run-directions-check-if-returned [[0 0] [0 1]] directions))))
