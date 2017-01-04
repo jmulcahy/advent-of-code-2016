@@ -23,15 +23,30 @@
     (let [state {"a" 1 "b" 2} exp-state {"a" 10 "b" 2}]
       (is (= (sut/copy 10 "a" state) exp-state)))))
 
+(deftest copy-invalid-argument-test
+  (testing "invalid argument case"
+    (let [state {"a" 1 "b" 2}]
+      (is (= (sut/copy 10 1 state) state)))))
+
 (deftest increment-test
   (testing "increment register a"
     (let [state {"a" 1 "b" 2} exp-state {"a" 2 "b" 2}]
       (is (= (sut/increment "a" state) exp-state)))))
 
+(deftest increment-invalid-arg-test
+  (testing "increment invalid argument case"
+    (let [state {"a" 1 "b" 2}]
+      (is (= (sut/increment 1 state) state)))))
+
 (deftest decrement-test
   (testing "decrement register a"
     (let [state {"a" 1 "b" 2} exp-state {"a" 0 "b" 2}]
       (is (= (sut/decrement "a" state) exp-state)))))
+
+(deftest decrement-invalid-arg-test
+  (testing "decrement invalid argument case"
+    (let [state {"a" 1 "b" 2}]
+      (is (= (sut/decrement 1 state) state)))))
 
 (deftest jump-registers-test
   (testing "jump using only register arguments"

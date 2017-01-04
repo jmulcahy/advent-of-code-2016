@@ -10,15 +10,21 @@
 
 (defn copy
   [x1 x2 state]
-  (assoc state x2 (inst-arg state x1)))
+  (if (number? x2)
+    state
+    (assoc state x2 (inst-arg state x1))))
 
 (defn increment
   [x state]
-  (update state x inc))
+  (if (number? x)
+    state
+    (update state x inc)))
 
 (defn decrement
   [x state]
-  (update state x dec))
+  (if (number? x)
+    state
+    (update state x dec)))
 
 (defn jump
   [x1 x2 state]
