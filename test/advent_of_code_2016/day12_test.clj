@@ -3,8 +3,8 @@
             [clojure.test :refer :all]
             [clojure.string :as str]))
 
-(deftest inst-arg-keyword-test
-  (testing "keyword case"
+(deftest inst-arg-string-test
+  (testing "string case"
     (let [state {"a" 1}]
       (is (= (sut/inst-arg state "a") 1)))))
 
