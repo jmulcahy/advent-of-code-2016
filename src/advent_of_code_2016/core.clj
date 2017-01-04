@@ -3,7 +3,8 @@
   (:require [clojure.tools.cli :refer [parse-opts]])
   (:require [clojure.string :as str])
   (:require [advent-of-code-2016.day1 :as day1])
-  (:require [advent-of-code-2016.day12 :as day12]))
+  (:require [advent-of-code-2016.day12 :as day12])
+  (:require [advent-of-code-2016.day23 :as day23]))
 
 (defn do-day1
   [part]
@@ -29,11 +30,26 @@
         (format "register a: %d" (result "a")))
     (format "Unimplemented Part: %d" part))))
 
+(defn do-day23
+  [part]
+  (let [instruction-map {"cpy" day12/copy
+                         "inc" day12/increment
+                         "dec" day12/decrement
+                         "jnz" day12/jump
+                         "tgl" day23/toggle}]
+    (case part
+      1 (let [registers {"a" 7 "b" 0 "c" 0 "d" 0}
+              input (slurp (clojure.java.io/resource "day23part1.txt"))
+              result (day12/execute instruction-map registers input)]
+          (format "register a: %d" (result "a")))
+      (format "Unimplemented Part: %d" part))))
+
 (defn pick-day
   [day part]
   (case day
     1 (do-day1 part)
     12 (do-day12 part)
+    23 (do-day23 part)
     (format "Unimplemented Day: %d" day)))
 
 (defn usage [options-summary]
