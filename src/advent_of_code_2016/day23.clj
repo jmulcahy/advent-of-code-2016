@@ -17,6 +17,6 @@
         target-pc (+ (state :pc) (day12/inst-arg state arg))
         update-program #(assoc program target-pc %)
         update-state #(assoc state :program (update-program %))]
-    (if (<= 0 target-pc (count program))
+    (if (< -1 target-pc (count program))
       (update-state (apply toggled (program target-pc)))
       state)))
