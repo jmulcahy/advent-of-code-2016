@@ -49,7 +49,7 @@
 
 (defn transform-arg
   [arg]
-  (if (re-matches #"\d+" arg)
+  (if (re-matches #"-{0,1}\d+" arg)
     (Integer/parseInt arg)
     arg))
 
