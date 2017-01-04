@@ -40,3 +40,21 @@
     (let [state {:pc 0 "a" 10 :program [[day12/increment "a"]
                                        [day12/copy "a" "b"]]}]
       (is (= (sut/toggle "a" state) state)))))
+
+(deftest execute-test
+  (testing "execute a sample program with new toggle instruction"
+    (let [instruction-map {"cpy" day12/copy "inc" day12/increment
+                           "dec" day12/decrement "jnz" day12/jump
+                           "tgl" sut/toggle}
+          registers {"a" 0 "b" 0}
+          input "cpy 2 a\ntgl a\ntgl a\ntgl a\ncpy 1 a\ndec a\ndec a"
+          exp-program [[day12/copy 2 "a"]
+                       [sut/toggle "a"]
+                       [sut/toggle "a"]
+                       [day12/increment "a"]
+                       [day12/jump 1 "a"]
+                       [day12/decrement "a"]
+                       [day12/decrement "a"]]
+          exp-final-state {"a" 3 "b" 0 :pc 7 :program exp-program}]
+      (is (= (day12/execute instruction-map registers input)
+             exp-final-state)))))
