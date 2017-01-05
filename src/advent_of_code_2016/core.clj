@@ -42,6 +42,10 @@
               input (slurp (clojure.java.io/resource "day23part1.txt"))
               result (day12/execute instruction-map registers input)]
           (format "register a: %d" (result "a")))
+      2 (let [registers {"a" 12 "b" 0 "c" 0 "d" 0}
+              input (slurp (clojure.java.io/resource "day23part2.txt"))
+              result (day12/execute instruction-map registers input)]
+          (format "register a: %d" (result "a")))
       (format "Unimplemented Part: %d" part))))
 
 (defn pick-day
